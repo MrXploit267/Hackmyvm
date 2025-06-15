@@ -69,6 +69,40 @@ pass- WKINVzNQLKLDVAc
 -lvl lucy
 pass- OCmMUjebG53giud
 *sol;
+    chall type- str search 
+    sed -n '/fu.*ck/p'
 
-  
+-lvl elena
+pass- 4xZ5lIKYmfPLg9t
+*sol;
+    chall type- environment var
+    sol- env
+
+-lvl alice 
+pass - Cgecy2MY2MWbaqtsu
+*sol;
+    chall type- Access comments in /etc/passwd
+    cut -d: -f1,5 /etc/passwd | grep 'user'
+
+-lvl anna 
+pass - w8NvY27qkpdePox
+*sol;
+    cahll type- sudo command
+    sudo - u natalia /bin/bash
+
+-lvl natalia
+pass-NMuc4DkYKDsmZ5z
+chall type - b64 decoding
+*sol;
+    base64 -d filename
+
+-lvl eva
+pass- upsCA3UFu10fDAO
+    chall type - file time search
+    find / -type f -mtime +/- duration 2>/dev/null
+
+-lvl FRIDA
+pass- 39YziWp5gSvgQN9
+
+    
   
