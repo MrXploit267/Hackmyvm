@@ -99,7 +99,9 @@ chall type - b64 decoding
 -lvl eva
 pass- upsCA3UFu10fDAO
     chall type - file time search
-    find / -type f -mtime +/- duration 2>/dev/null
+    echo $(( (latestdate-actual date) * 365 ))
+syntaz: find / -type f -mtime +the date you calculated) .....
+    find / -type f -mtime +18250 2>/dev/null -exec cat {} +
 
 -lvl FRIDA
 pass- 39YziWp5gSvgQN9
