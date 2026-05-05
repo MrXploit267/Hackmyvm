@@ -105,6 +105,25 @@ syntaz: find / -type f -mtime +the date you calculated) .....
 
 -lvl FRIDA
 pass- 39YziWp5gSvgQN9
+chall type- str search
+sol;
+    cat repeated.txt | uniq -c | grep -v '^ *1 '
+uniq will label lines thsat are repeating aadjacently and unsorted, sort intstead of cat forsorted
+rmove lines that dont repeat and cat the fisrt one that repeats adjacentl;y
 
+-lvl eliza
+pass: Fg6b6aoksceQqB9
+chall type: ssh thru keys
+sol;
+  ssh -i <key> -p <port> <user@hostt>
+
+-lvl iris
+pass: kYjyoLcnBZ9EJdz
+chall type: encoded image
+sol; 1, cyberchef, b64 , render
+     2, base64 -d <encoded> > img.jpg
+        eog img, jpg, vie image
+-lvl eloise
+pass:yOUJlV0SHOnbSPm
     
   
