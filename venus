@@ -133,7 +133,7 @@ sol;
 -lvl lucia
 pass: uvMwFDQrQWPMeGP
 chall type: file seacch + list
-sol; for word in $(cat dict.txt); do
-        echo "found: ${word}" 2>/dev/null && cat /etc/xdg/${word} 2>/dev/null
+sol; for f in $(cat dict.txt); do
+        cat /etc/xdg/$f 2>/dev/null && echo "[FOUND: $f]"
       done
   
