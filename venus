@@ -125,5 +125,15 @@ sol; 1, cyberchef, b64 , render
         eog img, jpg, vie image
 -lvl eloise
 pass:yOUJlV0SHOnbSPm
-    
+chall type: hex decode
+tools used: xdd
+sol;
+    cat file | xdd -r -p
+
+-lvl lucia
+pass: uvMwFDQrQWPMeGP
+chall type: file seacch + list
+sol; for word in $(cat dict.txt); do
+        echo "found: ${word}" 2>/dev/null && cat /etc/xdg/${word} 2>/dev/null
+      done
   
