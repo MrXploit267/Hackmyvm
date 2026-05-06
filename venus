@@ -174,5 +174,16 @@ sol;
 -lvl celeste
 pass: VLSNMTKwSV2o8Tn
 call type: mysql brute force
-sol;
+sol; this was pure regex, but i dumed t down
+    get passwd dump and sql ump
+    cat /etc/passwd
+    mysql -u <user> -p, copy dump
+    grep -Fxf <(cut -d: -f1 <passwd file>) <(cut -d'|' -f3 <sqldump>|tr -d ' ')
+explanation:
+  grep -f - obtain pattern from a file
+        -F- fixed strings
+        -x - match whole line only (no partial garbage)
+  <() - (process substitution), urns command output into a fake file, So grep can read it like a normal file
+
+    
 
