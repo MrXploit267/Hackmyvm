@@ -136,4 +136,21 @@ chall type: file seacch + list
 sol; for f in $(cat dict.txt); do
         cat /etc/xdg/$f 2>/dev/null && echo "[FOUND: $f]"
       done
-  
+-lvl isabel
+pass:H5ol8Z2mrRsorC0
+challtpr: str search
+sol;
+  cat different.txt | uniq -c | grep -v '^ *2 '
+
+-lvl freya
+pass:EEDyYFDwYsmYawj
+chal type: disappering file
+sol;
+  while true; do ls /free && cat /free/* 2>/dev/null; done
+
+-lvl alexa
+pass: mxq9O3MSxxX9Q3S
+chall type: onn HHTP
+tools used: curl
+sol; check http port: for p in {1..10000}; do (echo >/dev/tcp/127.0.0.1/$p) >/dev/null 2>&1 && echo "open $p"; done
+    crl http://127.0.0.1:80
