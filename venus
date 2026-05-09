@@ -1,3 +1,5 @@
+rockyou: wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+
 -lvl 1
 pass-havefun!
 *sol;
@@ -50,8 +52,11 @@ pass- UNDchvln6Bmtu7b
 pass- pz8OqvJBFxH0cSj
 *sol;
   chall type- compressed zip file
-  mkdir -p /tmp/suzzy && cp passw0rd.zip /tmp/suzzy && cd /tmp/suzzy
-  unzip passw0rd.zip  && find . -type f -name "*.txt" -exec cat {} +
+sol;
+    scp - the file
+    zip2john protected.zip > zip.hash
+    john --wordlist=rockyou.txt zip.hash
+      unzip
 
 -lvl isla
 pass- D3XTob0FUImsoBb
@@ -223,4 +228,100 @@ chall type: ssh brute force
 sol; for a in {a..z}; do for b in {a..z}; do echo "v7xUVE2e5bjUc$a$b"; done; done > pass.txt
       hyfra -l <user> -P pass.txt -s <port> <host> ssh
 
+-lvl gloria 
+pass: v7xUVE2e5bjUcxw
+chall type: qr code reading
+sol; tkaqe screenshot, install zbar
+    zbarimg <screenshort>
+-lvl alora
+pass: mhrTFCoxGoqUxtw
+chall typ: iso file transfer
+sol; mkdir wtf
+      mount -o loop .iso wtf
+      unzip , if problems cp to tmp and do it there
 
+-lvl julie
+pass: sjDf4i2MSNgSvOv
+call typ: diff cmd
+sol:  diff both files
+
+-lvl irene
+pass: 8VeRLEFkBpe2DSD
+chall type: openssl decryption
+sol; type <>.pem <>.pub <>.enc
+    openssl pkeyutl -decrypt -inkey id_rsa.pem -in pass.enc
+
+-lvl adele
+pass: nbhlQyKuaXGojHx
+pass: .--. .- .--. .- .--. .- .-. .- -.. .. ... .
+chall type: morse decode- 
+sol; paru -s morsify unixcw
+     decode with morsify
+     listen, cw -f <(echo TEXT)
+
+-lvl sky 
+pass: papaparadise
+chall typ: cusrom curl reques
+sol; curl -H "Key: true"
+
+-lvl sarah
+pass: LWOHeRgmIxg7fuS
+chall type: hiden file
+
+-lvl mercy
+pass: ym5yyXZ163uIS8L
+chall typ: history
+sol: check the history
+
+-lvl paula;
+pass: dlHZ6cvX6cLuL8p
+chall typ: ids and group enum
+sol; groups
+     id
+    find / -type f -group hidden 2>/dev/null -exec cat {} +
+
+-lvl karla
+pass: gYAmvWY3I7yDKRf
+chall type: image forensics
+sol; exiftool image
+
+-lvl denise
+pass: pFg92DpGucMWccA
+chall ttp: doas
+sol; ls -l $(which doas) 
+     cat /etc/doas.conf
+     doas -su zora
+expln; doas is an alternative of sudo 
+
+-lvl zora
+pass: BWm1R3jCcb53riO
+chall type: hosts file
+sol;
+    cat /etc/hosts
+    curl -s venus.hmv
+
+-lvl belen
+pass: 2jA0E8bQ4WrGwWZ
+pass:$1$leona$lhWp56YnWAMz6z32Bw53L0 
+chall: hash decrypt
+hashtypr; md5crypt
+tools used: mjohnie
+sol; scp the hash and rename it to has extenseion
+      john --format=md5crypt --wordlist=roky file
+
+-lvl leona
+pass: freedom
+chall type: LOCAL DNS ENUMERATION
+sol;
+    ls /etc/bind
+    cat one of them
+expln:
+    bind- a software linus uses to host dns, confog files in the /etc/bind dir
+
+-lvl ava
+pass: oCXBeeEeYFX34NU
+chall type: bruteforce everryting, hash, encoding
+sol; 
+    find / -type f 2>/dev/null
+    get all passwords encoded ones too, make a wordkistlist
+    hydra -l maria -P wordlist host -s 5000 ssh 
