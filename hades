@@ -67,3 +67,22 @@ sol; 1. ./read, run the file
 
 -lvl althea
 pass: ObxEmwisYjERrDfvSbdA
+chall type: SUID binary abuse
+chall break down:
+    1. same binary perms as above 
+    2. same but different user
+goal: cat the pass 
+sol; 1. ./lsme
+    >it does something like this--> system("ls " + input);, assuming
+    >you enter the file path
+    >owner of the bin is root of group althea
+
+     2. ;whoami
+    >tried injecting and chaining the command with system();
+    > system("ls " + user_input); this allows us to chain commands because system tells the OS to open a shell and run this string as a command
+     3.;/bin/bash
+    > seems like the binary sets uid to andromeda to exec ls so spawning the shell by default if for the andromeda user
+
+-lvl andromeda
+pass: OTWGTbHzrxhYFSTlKcOt
+chall type: 
